@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sphoorthi • Audio Moments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-glow" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Simple, beautiful, searchable</p>
+        <h1>Sphoorthi</h1>
+        <p class="subtitle">
+          Upload recordings, tag them by date/day, and instantly share moments your friends can stream right in the browser.
+        </p>
+      </header>
+
+      <section class="card" aria-labelledby="share-title">
+        <h2 id="share-title">Share with your friends</h2>
+        <p class="subtitle">Host this app and send this link—friends can open it and stream recordings instantly.</p>
+        <div class="share-row">
+          <input id="shareLink" type="text" readonly />
+          <button id="copyShareBtn" type="button" class="btn btn-secondary">Copy</button>
+        </div>
+      </section>
+
+      <section class="card upload-card" aria-labelledby="upload-title">
+        <h2 id="upload-title">Owner upload access</h2>
+        <p class="subtitle">Only the owner with the upload key can add or delete recordings. Listeners can only play audio.</p>
+
+        <form id="ownerAuthForm" class="owner-auth-form">
+          <label class="field">
+            <span>Owner upload key</span>
+            <input id="ownerKeyInput" type="password" placeholder="Enter your private upload key" autocomplete="off" />
+          </label>
+          <div class="auth-row">
+            <button id="unlockBtn" type="submit" class="btn btn-secondary">Unlock upload mode</button>
+            <button id="lockBtn" type="button" class="btn btn-secondary">Lock</button>
+          </div>
+          <p id="authStatus" class="status-text" aria-live="polite">Upload mode is locked.</p>
+        </form>
+
+        <form id="uploadForm" class="upload-form" aria-disabled="true">
+          <label class="field">
+            <span>Audio file</span>
+            <input id="audioFile" type="file" accept="audio/*" required disabled />
+          </label>
+
+          <div class="grid-2">
+            <label class="field">
+              <span>Date</span>
+              <input id="dateInput" type="date" required disabled />
+            </label>
+            <label class="field">
+              <span>Day</span>
+              <select id="dayInput" required disabled>
+                <option value="">Choose day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Title</span>
+            <input id="titleInput" type="text" maxlength="80" placeholder="e.g. Morning voice note" required disabled />
+          </label>
+
+          <button id="uploadBtn" type="submit" class="btn" disabled>Upload & Save</button>
+        </form>
+      </section>
+
+      <section class="card library-card" aria-labelledby="library-title">
+        <div class="library-head">
+          <h2 id="library-title">Recording library</h2>
+          <label class="search-wrap" aria-label="Search recordings">
+            <input id="searchInput" type="search" placeholder="Search by title, date, day..." />
+          </label>
+        </div>
+        <p id="emptyState" class="empty-state">No recordings yet. Upload your first one ✨</p>
+        <ul id="recordingsList" class="recordings-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="recordingTemplate">
+      <li class="recording-item">
+        <div class="date-side">
+          <p class="date-big"></p>
+          <p class="day-side"></p>
+        </div>
+        <div class="recording-main">
+          <h3 class="recording-title"></h3>
+          <p class="meta"></p>
+          <audio controls preload="metadata"></audio>
+          <button type="button" class="delete-btn" aria-label="Delete recording" hidden>Delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
