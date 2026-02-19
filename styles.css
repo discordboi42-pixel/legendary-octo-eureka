@@ -1,0 +1,218 @@
+:root {
+  --bg: #080b19;
+  --bg-soft: #0f1730;
+  --card: rgba(255, 255, 255, 0.08);
+  --text: #eff3ff;
+  --muted: #b6c2e1;
+  --accent: #8a7dff;
+  --accent-2: #49d8ff;
+  --danger: #ff6b8a;
+  --border: rgba(255, 255, 255, 0.16);
+  --shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  color: var(--text);
+  background: radial-gradient(circle at 10% 5%, #1b2655 0, transparent 35%),
+    radial-gradient(circle at 80% 10%, #16395b 0, transparent 42%), var(--bg);
+}
+
+.background-glow {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 90% 80%, rgba(74, 216, 255, 0.2), transparent 30%),
+    radial-gradient(circle at 15% 85%, rgba(138, 125, 255, 0.25), transparent 25%);
+}
+
+.app-shell {
+  width: min(980px, 92vw);
+  margin: 2rem auto 3rem;
+  display: grid;
+  gap: 1.3rem;
+}
+
+.hero {
+  padding: 1.1rem 0.2rem;
+}
+
+.eyebrow {
+  margin: 0;
+  color: var(--accent-2);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+h1 {
+  margin: 0.2rem 0 0;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+  max-width: 65ch;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(8px);
+  padding: 1.2rem;
+}
+
+.upload-form,
+.field {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.field span {
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+input,
+select,
+button {
+  font: inherit;
+}
+
+input,
+select {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-soft);
+  color: var(--text);
+  padding: 0.7rem 0.85rem;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.8rem;
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+  color: white;
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+  margin-top: 0.4rem;
+  cursor: pointer;
+}
+
+.library-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.search-wrap input {
+  min-width: 280px;
+}
+
+.recordings-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: grid;
+  gap: 0.8rem;
+}
+
+.recording-item {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  gap: 1rem;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: rgba(7, 13, 31, 0.65);
+  padding: 0.9rem;
+}
+
+.date-side {
+  border-radius: 12px;
+  background: linear-gradient(160deg, rgba(138, 125, 255, 0.22), rgba(73, 216, 255, 0.18));
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  padding: 0.8rem 0.3rem;
+  text-align: center;
+}
+
+.date-big {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.day-side {
+  margin: 0.15rem 0 0;
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: #dbe6ff;
+}
+
+.recording-main {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.recording-title {
+  margin: 0;
+}
+
+.meta {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+audio {
+  width: 100%;
+}
+
+.delete-btn {
+  justify-self: start;
+  border: 1px solid rgba(255, 107, 138, 0.45);
+  background: rgba(255, 107, 138, 0.15);
+  color: #ffd9e3;
+  border-radius: 10px;
+  padding: 0.42rem 0.7rem;
+  cursor: pointer;
+}
+
+.empty-state {
+  color: var(--muted);
+}
+
+@media (max-width: 760px) {
+  .recording-item {
+    grid-template-columns: 1fr;
+  }
+
+  .search-wrap input {
+    min-width: 220px;
+    width: 100%;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}

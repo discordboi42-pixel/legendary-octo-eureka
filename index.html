@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sphoorthi • Audio Moments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="background-glow" aria-hidden="true"></div>
+
+    <main class="app-shell">
+      <header class="hero">
+        <p class="eyebrow">Simple, beautiful, searchable</p>
+        <h1>Sphoorthi</h1>
+        <p class="subtitle">
+          Upload recordings, tag them by date/day, and instantly share moments your friends can stream right in the browser.
+        </p>
+      </header>
+
+      <section class="card upload-card" aria-labelledby="upload-title">
+        <h2 id="upload-title">Upload a recording</h2>
+        <form id="uploadForm" class="upload-form">
+          <label class="field">
+            <span>Audio file</span>
+            <input id="audioFile" type="file" accept="audio/*" required />
+          </label>
+
+          <div class="grid-2">
+            <label class="field">
+              <span>Date</span>
+              <input id="dateInput" type="date" required />
+            </label>
+            <label class="field">
+              <span>Day</span>
+              <select id="dayInput" required>
+                <option value="">Choose day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+              </select>
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Title</span>
+            <input id="titleInput" type="text" maxlength="80" placeholder="e.g. Morning voice note" required />
+          </label>
+
+          <button type="submit" class="btn">Upload & Save</button>
+        </form>
+      </section>
+
+      <section class="card library-card" aria-labelledby="library-title">
+        <div class="library-head">
+          <h2 id="library-title">Recording library</h2>
+          <label class="search-wrap" aria-label="Search recordings">
+            <input id="searchInput" type="search" placeholder="Search by title, date, day..." />
+          </label>
+        </div>
+        <p id="emptyState" class="empty-state">No recordings yet. Upload your first one ✨</p>
+        <ul id="recordingsList" class="recordings-list" aria-live="polite"></ul>
+      </section>
+    </main>
+
+    <template id="recordingTemplate">
+      <li class="recording-item">
+        <div class="date-side">
+          <p class="date-big"></p>
+          <p class="day-side"></p>
+        </div>
+        <div class="recording-main">
+          <h3 class="recording-title"></h3>
+          <p class="meta"></p>
+          <audio controls preload="metadata"></audio>
+          <button type="button" class="delete-btn" aria-label="Delete recording">Delete</button>
+        </div>
+      </li>
+    </template>
+
+    <script src="script.js"></script>
+  </body>
+</html>
